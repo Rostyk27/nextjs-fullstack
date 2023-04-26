@@ -1,4 +1,7 @@
-export default function RootLayout({
+import '@/styles/global.scss';
+import GlassPane from '@/components/GlassPane';
+
+export default function AuthRootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -6,7 +9,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body>{children}</body>
+      <body className="h-screen w-screen rainbow-mesh p-6">
+        <GlassPane className="w-full h-full flex items-center justify-center">
+          {children}
+        </GlassPane>
+      </body>
     </html>
   );
 }
