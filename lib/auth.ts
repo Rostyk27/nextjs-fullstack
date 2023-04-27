@@ -38,11 +38,11 @@ export const validateJWT = async (jwt: string | Uint8Array) => {
 };
 
 interface Cookie {
-  get: (name: string | undefined) => { value: string };
+  get: (name: string) => { value: string };
 }
 
 export const getUserFromCookie = async (cookies: Cookie) => {
-  const jwt = cookies.get(process.env.COOKIE_NAME);
+  const jwt = cookies.get(process.env.COOKIE_NAME as string);
 
   const { id } = await validateJWT(jwt.value);
 
