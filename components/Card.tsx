@@ -9,7 +9,7 @@ const Card = ({ children, className }: CardProps) => {
   return (
     <div
       className={clsx(
-        'rounded-3xl px-10 py-4 drop-shadow-xl bg-white',
+        'rounded-3xl px-10 pt-8 pb-4 drop-shadow-xl bg-white',
         className
       )}
     >
