@@ -166,14 +166,12 @@ export default function AuthForm({ mode }: { mode: 'register' | 'signin' }) {
 
           <div className="flex items-center justify-between">
             <div>
-              <span>
-                <Link
-                  href={content.linkUrl}
-                  className="text-blue-600 font-bold"
-                >
-                  {content.linkText}
-                </Link>
-              </span>
+              <Link
+                href={content.linkUrl}
+                className="text-blue-600 font-bold hover:text-blue-400"
+              >
+                {content.linkText}
+              </Link>
             </div>
 
             <div>
