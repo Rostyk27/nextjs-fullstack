@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Greetings from '@/components/Greetings';
 import GreetingsWrapper from '@/components/GreetingsWrapper';
 import ProjectCard from '@/components/ProjectCard';
+import TaskCard from '@/components/TaskCard';
 
 const getData = async () => {
   await delay(2000);
@@ -50,7 +51,10 @@ export default async function Home() {
         </div>
 
         <div className="mt-6 flex-2 grow w-full flex">
-          <div className="w-full">{/* tasks here */}</div>
+          <div className="w-full">
+            {/* @ts-expect-error Server Component */}
+            <TaskCard title="Today's Tasks" />
+          </div>
         </div>
       </div>
     </div>
