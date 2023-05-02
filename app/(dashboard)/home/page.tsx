@@ -11,7 +11,7 @@ import ProjectCard from '@/components/ProjectCard';
 import TaskCard from '@/components/TaskCard';
 
 const getData = async () => {
-  await delay(2000);
+  await delay(500);
   const user = await getUserFromCookie(cookies() as any);
   const projects = await db.project.findMany({
     where: {

@@ -49,10 +49,26 @@ const TaskCard = async ({ title, tasks }: TaskCardProps) => {
       <div>
         {data && data.length ? (
           <div>
-            {data.map((task: any) => (
-              <div className="py-2 ">
+            {data.map((task: any, i: number) => (
+              <div className="py-2" key={i}>
                 <div>
                   <span className="text-gray-800">{task.name}</span>
+                  {' - '}
+                  <em>
+                    <small>
+                      <strong
+                        className={
+                          task.status === TASK_STATUS.COMPLETED
+                            ? 'text-green-500'
+                            : task.status === TASK_STATUS.STARTED
+                            ? 'text-blue-500'
+                            : 'text-gray-500'
+                        }
+                      >
+                        {task.status}
+                      </strong>
+                    </small>
+                  </em>
                 </div>
 
                 <div>
