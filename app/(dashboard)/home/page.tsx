@@ -9,6 +9,7 @@ import Greetings from '@/components/Greetings';
 import GreetingsWrapper from '@/components/GreetingsWrapper';
 import ProjectCard from '@/components/ProjectCard';
 import TaskCard from '@/components/TaskCard';
+import NewProject from '@/components/NewProject';
 
 const getData = async () => {
   await delay(500);
@@ -47,7 +48,9 @@ export default async function Home() {
             </div>
           ))}
 
-          <div className="w-1/3 p-3">{/* new project here */}</div>
+          <div className="w-1/3 p-3">
+            <NewProject />
+          </div>
         </div>
 
         <div className="mt-6 flex-2 grow w-full flex">
