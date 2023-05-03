@@ -1,12 +1,15 @@
 import '@/styles/global.scss';
+
 import Sidebar from '@/components/Sidebar';
 import GlassPane from '@/components/GlassPane';
 
+interface DashboardRootLayoutProps {
+  children: React.ReactNode;
+}
+
 export default function DashboardRootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: DashboardRootLayoutProps) {
   return (
     <html lang="en">
       <head />

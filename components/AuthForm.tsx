@@ -3,6 +3,7 @@
 import { register, signin } from '@/lib/api';
 import { useCallback, useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import { User } from '@prisma/client';
 
 import Link from 'next/link';
 import Card from './Card';
@@ -25,7 +26,12 @@ const signinContent = {
   buttonText: 'Sign In',
 };
 
-const initial = { email: '', password: '', firstName: '', lastName: '' };
+const initial: Partial<User> = {
+  email: '',
+  password: '',
+  firstName: '',
+  lastName: '',
+};
 
 export default function AuthForm({ mode }: { mode: 'register' | 'signin' }) {
   const [formState, setFormState] = useState({ ...initial });
@@ -86,7 +92,7 @@ export default function AuthForm({ mode }: { mode: 'register' | 'signin' }) {
                   required
                   id="first_name"
                   placeholder="First Name"
-                  value={formState.firstName}
+                  value={formState.firstName as string}
                   className="border-solid border-gray border-2 px-6 py-2 text-lg rounded-3xl w-full"
                   onChange={e =>
                     setFormState(prev => ({
@@ -109,7 +115,7 @@ export default function AuthForm({ mode }: { mode: 'register' | 'signin' }) {
                   required
                   id="last_name"
                   placeholder="Last Name"
-                  value={formState.lastName}
+                  value={formState.lastName as string}
                   className="border-solid border-gray border-2 px-6 py-2 text-lg rounded-3xl w-full"
                   onChange={e =>
                     setFormState(prev => ({

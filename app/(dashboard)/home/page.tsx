@@ -1,7 +1,8 @@
+import { db } from '@/lib/db';
 import { delay } from '@/lib/async';
 import { getUserFromCookie } from '@/lib/auth';
-import { db } from '@/lib/db';
 import { cookies } from 'next/headers';
+import { RequestCookies } from 'next/dist/server/web/spec-extension/cookies';
 import { Suspense } from 'react';
 
 import Link from 'next/link';
@@ -13,7 +14,7 @@ import NewProject from '@/components/NewProject';
 
 const getData = async () => {
   await delay(500);
-  const user = await getUserFromCookie(cookies() as any);
+  const user = await getUserFromCookie(cookies() as RequestCookies);
   const projects = await db.project.findMany({
     where: {
       ownerId: user?.id,

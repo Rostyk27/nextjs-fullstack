@@ -10,6 +10,7 @@ export default async function handler(
   const user = await validateJWT(req.cookies[index] as string);
 
   await db.project.create({
+    /* @ts-ignore */
     data: {
       name: req.body.name,
       ownerId: user.id,

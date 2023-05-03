@@ -1,12 +1,14 @@
-import { getUserFromCookie } from '@/lib/auth';
+import { delay } from '@/lib/async';
 import { cookies } from 'next/headers';
+import { getUserFromCookie } from '@/lib/auth';
+import { RequestCookies } from 'next/dist/server/web/spec-extension/cookies';
+
 import Button from './Button';
 import Card from './Card';
-import { delay } from '@/lib/async';
 
 const getData = async () => {
   await delay(2000);
-  const user = await getUserFromCookie(cookies() as any);
+  const user = await getUserFromCookie(cookies() as RequestCookies);
   return user;
 };
 

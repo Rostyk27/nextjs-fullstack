@@ -1,19 +1,17 @@
 'use client';
 
-import Link from 'next/link';
-import { Settings, User, Grid, Calendar } from 'react-feather';
+import { SidebarLinkData } from './Sidebar';
+import { Settings, User, Grid, Calendar, Icon } from 'react-feather';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 
-const icons = { Settings, User, Grid, Calendar };
+import Link from 'next/link';
 
-interface SidebarLinkProps {
-  link: {
-    label: string;
-    icon: keyof typeof icons;
-    link: string;
-  };
-}
+type SidebarLinkProps = {
+  link: SidebarLinkData;
+};
+
+const icons = { Settings, User, Grid, Calendar };
 
 const SidebarLink = ({ link }: SidebarLinkProps) => {
   const pathname = usePathname();
@@ -23,7 +21,7 @@ const SidebarLink = ({ link }: SidebarLinkProps) => {
     isActive = true;
   }
 
-  const Icon = icons[link.icon];
+  const Icon: Icon = icons[link.icon as keyof typeof icons];
 
   return (
     <Link href={link.link} className="w-full flex justify-center items-center">

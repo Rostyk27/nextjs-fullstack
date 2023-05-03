@@ -1,11 +1,17 @@
 import Card from './Card';
 import SidebarLink from './SidebarLink';
 
-const links = [
-  { label: 'Home', icon: 'Grid' as const, link: '/home' },
-  { label: 'Calendar', icon: 'Calendar' as const, link: '/calendar' },
-  { label: 'Profile', icon: 'User' as const, link: '/profile' },
-  { label: 'Settings', icon: 'Settings' as const, link: '/settings' },
+export type SidebarLinkData = {
+  label: string;
+  icon: string;
+  link: string;
+};
+
+const links: SidebarLinkData[] = [
+  { label: 'Home', icon: 'Grid', link: '/home' },
+  { label: 'Calendar', icon: 'Calendar', link: '/calendar' },
+  { label: 'Profile', icon: 'User', link: '/profile' },
+  { label: 'Settings', icon: 'Settings', link: '/settings' },
 ];
 
 const Sidebar = () => {

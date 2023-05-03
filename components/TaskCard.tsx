@@ -1,12 +1,19 @@
-import { getUserFromCookie } from '@/lib/auth';
 import { db } from '@/lib/db';
-import { TASK_STATUS } from '@prisma/client';
 import { cookies } from 'next/headers';
+import { getUserFromCookie } from '@/lib/auth';
+import { RequestCookies } from 'next/dist/server/web/spec-extension/cookies';
+import { Task, TASK_STATUS } from '@prisma/client';
+
 import Button from './Button';
 import Card from './Card';
 
+interface TaskCardProps {
+  title?: string;
+  tasks?: Task[];
+}
+
 const getData = async () => {
-  const user = await getUserFromCookie(cookies() as any);
+  const user = await getUserFromCookie(cookies() as RequestCookies);
   const tasks = await db.task.findMany({
     where: {
       ownerId: user?.id,
@@ -23,11 +30,6 @@ const getData = async () => {
 
   return tasks;
 };
-
-interface TaskCardProps {
-  title: string;
-  tasks?: any;
-}
 
 const TaskCard = async ({ title, tasks }: TaskCardProps) => {
   const data = tasks || (await getData());
@@ -49,7 +51,7 @@ const TaskCard = async ({ title, tasks }: TaskCardProps) => {
       <div>
         {data && data.length ? (
           <div>
-            {data.map((task: any, i: number) => (
+            {data.map((task: Task, i: number) => (
               <div className="py-2" key={i}>
                 <div>
                   <span className="text-gray-800">{task.name}</span>
